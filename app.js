@@ -9,6 +9,7 @@ import miscellaneousRoutes from "./routes/miscellaneous.routes.js";
 import express from "express";
 import connectToDb from "./config/db.config.js";
 import errorMiddleware from "./middleware/error.middleware.js";
+import blogRoutes from "./routes/blogRoutes.js";
 
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(cors(corsOptions));
 app.use("/api/v1/user", userRoutes);
 // app.use("/api/v1/payments", paymentRoutes);
 app.use("/api/v1/", miscellaneousRoutes);
+app.use("/api/v1/blogs", blogRoutes);
 
 app.all("*", (req, res) => {
   res.status(404).send("OOPS!! 404 page not found");
